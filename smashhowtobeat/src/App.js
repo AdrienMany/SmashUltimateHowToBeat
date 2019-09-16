@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Dashboard from './components/dashboard/Dashboard';
+import MatchupDetail from './components/matchup/MatchupDetail';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
     <div className="App">
       <Navbar></Navbar>
       <Switch>
-        <Route path='/' component={Dashboard}></Route>
+        <Route exact path='/' component={Dashboard}></Route>
+        <Route path='/matchup/:id' component={MatchupDetail}></Route>
       </Switch>
     </div>
     </BrowserRouter>
