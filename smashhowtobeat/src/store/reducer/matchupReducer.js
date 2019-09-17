@@ -7,6 +7,10 @@ const initState = {
 };
 
 const matchupReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'ADD_MATCHUP':
+            console.log('add matchup', action)
+    }
     return state;
 }
 

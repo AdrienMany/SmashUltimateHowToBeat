@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import CreateMatchup, { createMatchup } from '../../store/actions/matchupActions';
 
-export default class CreateMatchup extends Component {
+class CreateMatchup extends Component {
     state = {
         character: '',
         opponent: '',
@@ -16,7 +18,8 @@ export default class CreateMatchup extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
+        this.props.createMatchup(this.state);
     }
 
     render() {
@@ -48,3 +51,11 @@ export default class CreateMatchup extends Component {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createMatchup: (matchup) => dispatch(createMatchup(matchup))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateMatchup);
