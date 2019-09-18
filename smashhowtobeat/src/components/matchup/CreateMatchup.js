@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreateMatchup, { createMatchup } from '../../store/actions/matchupActions';
+import { createMatchup } from '../../store/actions/matchupActions';
 
 class CreateMatchup extends Component {
     state = {
