@@ -6,7 +6,7 @@ class CreateMatchup extends Component {
     state = {
         character: '',
         opponent: '',
-        matchup: '',
+        content: '',
         link: ''
     }
 
@@ -28,6 +28,9 @@ class CreateMatchup extends Component {
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">New matchup</h5>
                     <div className="input-field">
+                        <input type="hidden" id="game" value="Super Smash Bros Ultimate"></input>
+                    </div>
+                    <div className="input-field">
                         <label htmlFor="character">Your character</label>
                         <input type="text" id="character" onChange={this.handleChange}></input>
                     </div>
@@ -36,8 +39,8 @@ class CreateMatchup extends Component {
                         <input type="text" id="opponent" onChange={this.handleChange}></input>
                     </div>
                     <div className="input-field">
-                        <label htmlFor="matchup">Explain the matchup</label>
-                        <textarea id="matchup" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                        <label htmlFor="content">Explain the matchup</label>
+                        <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
                     </div>
                     <div className="input-field">
                         <label htmlFor="link">Link</label>

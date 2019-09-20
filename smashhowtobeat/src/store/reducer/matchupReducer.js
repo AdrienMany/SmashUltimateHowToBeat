@@ -9,9 +9,14 @@ const initState = {
 const matchupReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_MATCHUP':
-            console.log('add matchup', action)
+            console.log('add matchup: ', action.matchup);
+            return state;
+        case 'ADD_MATCHUP_ERROR':
+            console.log('create project error: ', action.error);
+            return state;
+        default:
+            return state;
     }
-    return state;
 }
 
 export default matchupReducer;

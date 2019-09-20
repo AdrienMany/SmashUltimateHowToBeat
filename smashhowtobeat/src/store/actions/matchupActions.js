@@ -1,6 +1,16 @@
 export const createMatchup = (matchup) => {
-    return (dispatch, getState) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
         // ASYNC CALL
-        dispatch({ type: 'ADD_MATCHUP', matchup: matchup })
+        const firestore = getFirestore();
+        firestore.collection('matchups').add({
+            ...matchup,
+            author: 'Marion',
+            date: new Date(),
+            game: 'smash'
+        }).then(() => {
+            dispatch({ type: 'ADD_MATCHUP', matchup: matchup })
+        }).catch((error) => {
+            dispatch({ type: 'ADD_MATCHUP_ERROR', error })
+        })
     }
 }
