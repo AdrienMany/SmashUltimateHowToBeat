@@ -1,5 +1,6 @@
 import React from 'react';
 import MatchupSummary from './MatchupSummary';
+import { Link } from 'react-router-dom';
 
 const MatchupList = ({matchups}) => {
     console.log(matchups);
@@ -8,7 +9,9 @@ const MatchupList = ({matchups}) => {
 
             { matchups && matchups.map(matchup => {
                 return (
-                    <MatchupSummary key={matchup.id} matchup={matchup}></MatchupSummary>
+                    <Link to={'/matchup/' + matchup.id} key={matchup.id}>
+                        <MatchupSummary matchup={matchup}></MatchupSummary>
+                    </Link>
                 )
             }) }
 

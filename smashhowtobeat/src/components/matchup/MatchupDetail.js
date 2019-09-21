@@ -1,22 +1,47 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 const MatchupDetail = (props) => {
-    const id = props.match.params.id;
-    return (
-        <div className="matchup-detail container section">
-            <div className="card z-depths-0">
+    const { matchup } = props;
+    if (matchup) {
+        return (
+        <div className="container section matchup-details">
+            <div className="card z-depth-2">
                 <div className="card-content">
-                    <span className="card-title">Matchup {id}</span>
-                    <p>Description très longue description très longue description très longue description très longue description très longue description très longue description très longue description très longue description très longue description très longue description très longue description très longue description très longue </p>
+                    <span className="card-title">{matchup.character} VS {matchup.opponent}</span>
+                    <p>{matchup.content}</p>
                 </div>
-                <div className="card-action grey lighten-4 gre-text">
-                    <div>Posted by Adrien Many</div>
-                    <div>Today</div>
+                <div className="card-action grey lighten-4 grey-text">
+                    <div>Posted by {matchup.author}</div>
+                    <div>2nd September, 2am</div>
                 </div>
             </div>
-            
         </div>
-    )
+        )
+    } else {
+        return (
+        <div className="container center">
+            <p>Loading project...</p>
+        </div>
+        )
+    }
 }
 
-export default MatchupDetail;
+const mapStateToProps = (state, ownProps) => {
+    console.log(state);
+    const id = ownProps.match.params.id;
+    const matchups = state.firestore.data.matchups;
+    const matchup = matchups ? matchups[id] : null
+    return {
+        matchup: matchup
+    }
+}
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([{
+        collection: 'matchups'
+    }])
+)(MatchupDetail)
