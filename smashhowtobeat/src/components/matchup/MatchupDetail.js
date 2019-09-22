@@ -23,7 +23,7 @@ const MatchupDetail = (props) => {
     } else {
         return (
         <div className="container center">
-            <p>Loading project...</p>
+            <p>Loading matchup...</p>
         </div>
         )
     }
