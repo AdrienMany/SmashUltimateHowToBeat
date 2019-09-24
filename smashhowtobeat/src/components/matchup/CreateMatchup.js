@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createMatchup } from '../../store/actions/matchupActions';
+import { Redirect } from 'react-router-dom';
 
 class CreateMatchup extends Component {
     state = {
@@ -23,6 +24,9 @@ class CreateMatchup extends Component {
     }
 
     render() {
+        const { auth } = this.props;
+        if (!auth.uid) return <Redirect to="/signin"></Redirect>
+
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
@@ -55,10 +59,16 @@ class CreateMatchup extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createMatchup: (matchup) => dispatch(createMatchup(matchup))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateMatchup);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateMatchup);
