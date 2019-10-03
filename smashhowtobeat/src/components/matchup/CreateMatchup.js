@@ -21,6 +21,7 @@ class CreateMatchup extends Component {
         e.preventDefault();
         // console.log(this.state);
         this.props.createMatchup(this.state);
+        this.props.history.push('/');
     }
 
     render() {

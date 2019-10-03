@@ -7,6 +7,7 @@ class SignUp extends Component {
     state = {
         email: '',
         password: '',
+        username: '',
         main: ''
     }
 
@@ -37,6 +38,10 @@ class SignUp extends Component {
                     <div className="input-field">
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" onChange={this.handleChange}></input>
+                    </div>
+                    <div className="input-field">
+                        <label htmlFor="username">Username</label>
+                        <input type="text" id="username" onChange={this.handleChange}></input>
                     </div>
                     <div className="input-field">
                         <label htmlFor="main">Main</label>

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const MatchupSummary = ({matchup}) => {
     return (
@@ -6,7 +7,7 @@ const MatchupSummary = ({matchup}) => {
             <div className="card-content grey-text text-darken-3">
                 <span className="card-title">{matchup.character} VS {matchup.opponent}</span>
                 <p>Posted by {matchup.author}</p>
-                <p className="grey-text">date</p>
+                <p className="grey-text">{moment(matchup.date.toDate()).calendar()}</p>
             </div>
         </div>
     )
