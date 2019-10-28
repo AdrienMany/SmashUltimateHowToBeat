@@ -1,5 +1,5 @@
 export const createMatchup = (matchup) => {
-    return (dispatch, getState, { getFirebase, getFirestore }) => {
+    return (dispatch, getState, { getFirestore }) => {
         // ASYNC CALL
         const firestore = getFirestore();
         const profile = getState().firebase.profile;

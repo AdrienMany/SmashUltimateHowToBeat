@@ -8,7 +8,7 @@ import { Redirect} from 'react-router-dom';
 
 class Dashboard extends Component {
     render() {
-        // console.log(this.props);
+        console.log('TEST PROPS : ' + this.props);
         const { matchups, auth } = this.props;
         if (!auth.uid) return <Redirect to="/signin"></Redirect>
 
@@ -28,7 +28,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
+    console.log(state);
     return {
         matchups: state.firestore.ordered.matchups, 
         auth: state.firebase.auth
